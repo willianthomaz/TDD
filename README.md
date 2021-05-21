@@ -1,4 +1,7 @@
-# Primeiro-teste
-Estrutura de um teste
+# Teste
 
-Primeiro teste com java
+Fiz um primeiro teste simples em java para testar o conhecimento aprendido no curso.
+
+
+
+
