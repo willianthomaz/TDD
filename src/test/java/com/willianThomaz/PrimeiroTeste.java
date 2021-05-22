@@ -2,13 +2,20 @@ package com.willianThomaz;
 
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PrimeiroTeste {
+
+    Calculadora calculadora;
+
+    @Before
+    public void setUp(){
+        calculadora = new Calculadora();
+    }
     @Test
     public void somar2NumerosTest(){
         //cenário//
-        Calculadora calculadora = new Calculadora();
         int numero1 = 10, numero2 = 5;
 
         //execução//
@@ -23,7 +30,6 @@ public class PrimeiroTeste {
     @Test(expected = RuntimeException.class)
     public void naoDeveSomarNumerosNegativos(){
         //cenário
-        Calculadora calculadora = new Calculadora();
         int numero1 = -10, numero2 = 5;
 
         //execução
@@ -33,7 +39,6 @@ public class PrimeiroTeste {
     @Test
     public void subtrair2NumerosTest(){
         //cenário//
-        Calculadora calculadora = new Calculadora();
         int numero1 = 10, numero2 = 5;
 
         //execução//
@@ -45,7 +50,6 @@ public class PrimeiroTeste {
     @Test(expected = RuntimeException.class)
     public void naoDeveSubtrairNumerosNegativos(){
         //cenário
-        Calculadora calculadora = new Calculadora();
         int numero1 = -10, numero2 = 5;
 
         //execução
@@ -54,7 +58,6 @@ public class PrimeiroTeste {
     @Test
     public void multiplicar2NumerosTest(){
         //cenário//
-        Calculadora calculadora = new Calculadora();
         int numero1 = 10, numero2 = 5;
 
         //execução//
@@ -66,7 +69,6 @@ public class PrimeiroTeste {
     @Test(expected = RuntimeException.class)
     public void naoDeveMultiplicarNumerosNegativos(){
         //cenário
-        Calculadora calculadora = new Calculadora();
         int numero1 = -10, numero2 = 5;
 
         //execução
@@ -75,7 +77,6 @@ public class PrimeiroTeste {
     @Test
     public void dividir2NumerosTest(){
         //cenário//
-        Calculadora calculadora = new Calculadora();
         int numero1 = 10, numero2 = 5;
 
         //execução//
@@ -87,7 +88,6 @@ public class PrimeiroTeste {
     @Test(expected = RuntimeException.class)
     public void naoDeveDividirNumerosNegativos(){
         //cenário
-        Calculadora calculadora = new Calculadora();
         int numero1 = 0, numero2 = 5;
 
         //execução
