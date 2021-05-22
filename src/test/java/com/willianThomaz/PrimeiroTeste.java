@@ -8,6 +8,7 @@ import org.junit.Test;
 public class PrimeiroTeste {
 
     Calculadora calculadora;
+    int numero1 = 10, numero2 = 5;
 
     @Before
     public void setUp(){
@@ -16,7 +17,6 @@ public class PrimeiroTeste {
     @Test
     public void somar2NumerosTest(){
         //cenário//
-        int numero1 = 10, numero2 = 5;
 
         //execução//
         int resultado = calculadora.somar(numero1,numero2);
@@ -39,7 +39,6 @@ public class PrimeiroTeste {
     @Test
     public void subtrair2NumerosTest(){
         //cenário//
-        int numero1 = 10, numero2 = 5;
 
         //execução//
         int resultado = calculadora.subtrair(numero1,numero2);
@@ -58,7 +57,6 @@ public class PrimeiroTeste {
     @Test
     public void multiplicar2NumerosTest(){
         //cenário//
-        int numero1 = 10, numero2 = 5;
 
         //execução//
         int resultado = calculadora.multiplicar(numero1,numero2);
@@ -77,7 +75,6 @@ public class PrimeiroTeste {
     @Test
     public void dividir2NumerosTest(){
         //cenário//
-        int numero1 = 10, numero2 = 5;
 
         //execução//
         int resultado = calculadora.dividir(numero1,numero2);
@@ -85,10 +82,10 @@ public class PrimeiroTeste {
         //verificações//
         Assert.assertEquals(2, resultado);
     }
-    @Test(expected = RuntimeException.class)
-    public void naoDeveDividirNumerosNegativos(){
+    @Test(expected = ArithmeticException.class)
+    public void naoDeveDividirPorZero(){
         //cenário
-        int numero1 = 0, numero2 = 5;
+        int numero1 = 10, numero2 = 0;
 
         //execução
         calculadora.dividir(numero1,numero2);
@@ -116,7 +113,7 @@ public class PrimeiroTeste {
 
         int dividir(int num, int num2){
             if (num < 0 || num2 < 0 || num == 0 || num2 == 0){
-                throw new RuntimeException("Não é permitido dividir numeros negativos.");
+                throw new ArithmeticException("Não é permitido dividir numeros negativos.");
             }
             return num / num2;
         }
