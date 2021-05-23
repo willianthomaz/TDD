@@ -1,16 +1,18 @@
 package com.willianThomaz;
 
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 public class PrimeiroTeste {
 
+    @Mock
     Calculadora calculadora;
     int numero1 = 10, numero2 = 5;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         calculadora = new Calculadora();
     }
@@ -22,18 +24,18 @@ public class PrimeiroTeste {
         int resultado = calculadora.somar(numero1,numero2);
 
         //verificações//
-        Assert.assertEquals(15, resultado);
+        Assertions.assertEquals(15, resultado);
 
         // Assertions.assertThat(resultado).isBetween(14,16);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void naoDeveSomarNumerosNegativos(){
         //cenário
         int numero1 = -10, numero2 = 5;
 
         //execução
-        calculadora.somar(numero1,numero2);
+        Assertions.assertThrows(RuntimeException.class, () -> calculadora.somar(numero1,numero2));
 
     }
     @Test
@@ -44,15 +46,15 @@ public class PrimeiroTeste {
         int resultado = calculadora.subtrair(numero1,numero2);
 
         //verificações//
-        Assert.assertEquals(5, resultado);
+        Assertions.assertEquals(5, resultado);
     }
-    @Test(expected = RuntimeException.class)
+    @Test
     public void naoDeveSubtrairNumerosNegativos(){
         //cenário
         int numero1 = -10, numero2 = 5;
 
         //execução
-        calculadora.subtrair(numero1,numero2);
+        Assertions.assertThrows(RuntimeException.class, () -> calculadora.subtrair(numero1,numero2));
     }
     @Test
     public void multiplicar2NumerosTest(){
@@ -62,15 +64,15 @@ public class PrimeiroTeste {
         int resultado = calculadora.multiplicar(numero1,numero2);
 
         //verificações//
-        Assert.assertEquals(50, resultado);
+        Assertions.assertEquals(50, resultado);
     }
-    @Test(expected = RuntimeException.class)
+    @Test
     public void naoDeveMultiplicarNumerosNegativos(){
         //cenário
         int numero1 = -10, numero2 = 5;
 
         //execução
-        calculadora.multiplicar(numero1,numero2);
+        Assertions.assertThrows(RuntimeException.class, () ->  calculadora.multiplicar(numero1,numero2));
     }
     @Test
     public void dividir2NumerosTest(){
@@ -80,15 +82,15 @@ public class PrimeiroTeste {
         int resultado = calculadora.dividir(numero1,numero2);
 
         //verificações//
-        Assert.assertEquals(2, resultado);
+        Assertions.assertEquals(2, resultado);
     }
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void naoDeveDividirPorZero(){
         //cenário
         int numero1 = 10, numero2 = 0;
 
         //execução
-        calculadora.dividir(numero1,numero2);
+        Assertions.assertThrows(ArithmeticException.class, () -> calculadora.dividir(numero1,numero2));
     }
 
     public class Calculadora{
@@ -118,6 +120,4 @@ public class PrimeiroTeste {
             return num / num2;
         }
     }
-
-
 }
