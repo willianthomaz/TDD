@@ -4,9 +4,12 @@ Fiz um primeiro teste simples em java para testar o conhecimento aprendido no cu
 
 O que foi usado?
 
-TDD
+TDD 
+
 Junit5
+
 Mockito
+
 AssertJ
 
 
