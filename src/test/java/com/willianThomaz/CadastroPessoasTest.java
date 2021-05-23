@@ -2,11 +2,14 @@ package com.willianThomaz;
 
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 
 public class CadastroPessoasTest {
 
     @Test
+    @DisplayName("Deve criar cadastro de Pessoas")
     public void deveCriarCadastroDePessoas(){
 
         //cenário e execução
@@ -16,6 +19,7 @@ public class CadastroPessoasTest {
         Assertions.assertThat(cadastroPessoas.getPessoas()).isEmpty();
     }
     @Test
+    @DisplayName("Deve adicionar uma Pessoa")
     public void deveAdicionarUmaPessoa(){
         //cenário
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
@@ -32,16 +36,18 @@ public class CadastroPessoasTest {
                 .contains(pessoa);
     }
 
-    @Test(expected = PessoaSemNomeException.class)
+    @Test
+    @DisplayName("Não deve adicionar uma Pessoa com nome vazio")
     public void naoDeveAdicionarPessoaComNomeVazio(){
         //cenário
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
         Pessoa pessoa = new Pessoa();
 
         //execução
-        cadastroPessoas.adicionar(pessoa);
+        org.junit.jupiter.api.Assertions.assertThrows(PessoaSemNomeException.class, () -> cadastroPessoas.adicionar(pessoa));
     }
     @Test
+    @DisplayName("Deve remover uma Pessoa")
     public void deveRemoverUmaPessoa(){
         //cenário
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
@@ -54,14 +60,15 @@ public class CadastroPessoasTest {
         //verificação
         Assertions.assertThat(cadastroPessoas.getPessoas()).isEmpty();
     }
-    @Test(expected = CadastroVazioException.class)
+    @Test
+    @DisplayName("Deve lançar erro ao remover Pessoa inexistente")
     public void deveLancarErroAoRemoverPessoaInexistente(){
         //cenário
         CadastroPessoas cadastroPessoas = new CadastroPessoas();
         Pessoa pessoa = new Pessoa();
 
         //execução
-        cadastroPessoas.remover(pessoa);
+        org.junit.jupiter.api.Assertions.assertThrows(CadastroVazioException.class, () -> cadastroPessoas.remover(pessoa));
     }
 
 }
